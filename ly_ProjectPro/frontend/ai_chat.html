@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：AI 聊天页面
+  功能说明：与硅基流动大模型对话的聊天界面，消息通过后端接口
+            POST /api/ai/chat 转发（API Key 保存在服务端 .env，不暴露给浏览器）；
+            支持上下文多轮对话、发送中状态、成功与失败提示，页面适配手机宽度
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 聊天 - 刘悦的项目集</title>
+  <link rel="stylesheet" href="css/ly_ai_chat.css">
+</head>
+<body>
+  <main class="ly_main">
+    <a class="ly_back" href="index.html">← 返回首页</a>
+
+    <section class="ly_chat_card">
+      <header class="ly_chat_header">
+        <h1 class="ly_title">AI 聊天</h1>
+        <p class="ly_desc">基于硅基流动大模型，接口：<span class="ly_api_text">POST /api/ai/chat</span></p>
+      </header>
+
+      <!-- 消息列表区域 -->
+      <div class="ly_chat_box" id="ly_chat_box">
+        <div class="ly_msg ly_msg_ai">你好！我是本项目的 AI 助手，有什么想聊的尽管问我～</div>
+      </div>
+
+      <!-- 错误提示条 -->
+      <div class="ly_status ly_hide" id="ly_status"></div>
+
+      <!-- 输入区域 -->
+      <footer class="ly_input_bar">
+        <textarea class="ly_input" id="ly_input" rows="2" placeholder="输入消息，Enter 发送，Shift+Enter 换行"></textarea>
+        <button class="ly_send_btn" id="ly_send_btn" type="button">发送</button>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/ly_ai_chat.js"></script>
+</body>
+</html>

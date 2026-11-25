@@ -1,0 +1,370 @@
+/*
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：知识库问答页面样式（RAG）
+  功能说明：上传区虚线拖拽框、文件列表、问答气泡三个模块；
+            窄屏（手机）下单列自适应
+*/
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #eaf2ff;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+/* 主体容器 */
+.ly_main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 50px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 返回首页 */
+.ly_back {
+  display: inline-block;
+  color: rgba(234, 242, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.ly_back:hover {
+  color: #a5f3c4;
+}
+
+/* 毛玻璃卡片 */
+.ly_card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 26px 28px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.35);
+}
+
+.ly_card_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ly_title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #a5f3c4, #7ee8fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ly_sub_title {
+  font-size: 18px;
+  color: #a5f3c4;
+}
+
+.ly_desc {
+  font-size: 13px;
+  color: rgba(234, 242, 255, 0.65);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.ly_api_text {
+  font-size: 12px;
+  color: #a5f3c4;
+}
+
+/* 上传区：虚线拖拽框 */
+.ly_upload_area {
+  border: 2px dashed rgba(165, 243, 196, 0.5);
+  border-radius: 14px;
+  padding: 26px 20px;
+  text-align: center;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.ly_upload_area.ly_drag_over {
+  border-color: #a5f3c4;
+  background: rgba(165, 243, 196, 0.08);
+}
+
+.ly_upload_icon {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.ly_upload_text {
+  font-size: 13px;
+  color: rgba(234, 242, 255, 0.7);
+  margin-bottom: 14px;
+  word-break: break-all;
+}
+
+.ly_upload_btn {
+  font-size: 14px;
+  font-weight: bold;
+  color: #06281f;
+  background: #a5f3c4;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.ly_upload_btn:hover {
+  transform: translateY(-2px);
+}
+
+.ly_upload_btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 状态提示条 */
+.ly_status {
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-top: 14px;
+}
+
+.ly_hide {
+  display: none;
+}
+
+.ly_info {
+  background: rgba(165, 243, 196, 0.12);
+  border: 1px solid rgba(165, 243, 196, 0.4);
+  color: #c9f7da;
+}
+
+.ly_fail {
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ffa8a8;
+}
+
+/* 刷新按钮 */
+.ly_refresh_btn {
+  font-size: 12px;
+  color: #06281f;
+  background: rgba(165, 243, 196, 0.85);
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.ly_refresh_btn:hover {
+  background: #a5f3c4;
+}
+
+/* 文件列表 */
+.ly_file_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ly_file_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.ly_file_icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.ly_file_info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ly_file_name {
+  font-size: 14px;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.ly_file_meta {
+  font-size: 12px;
+  color: rgba(234, 242, 255, 0.5);
+  margin-top: 4px;
+}
+
+.ly_file_delete {
+  font-size: 12px;
+  color: #ffa8a8;
+  background: rgba(255, 107, 107, 0.12);
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ly_file_delete:hover {
+  background: rgba(255, 107, 107, 0.25);
+}
+
+/* 问答区 */
+.ly_chat_box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+  max-height: 380px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+/* 气泡 */
+.ly_msg {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ly_msg_ai {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.12);
+  border-top-left-radius: 4px;
+}
+
+.ly_msg_user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #2f9e6e, #7ee8fa);
+  color: #06281f;
+  border-top-right-radius: 4px;
+}
+
+/* 引用来源小卡 */
+.ly_sources {
+  align-self: flex-start;
+  max-width: 82%;
+  font-size: 12px;
+  color: rgba(234, 242, 255, 0.65);
+  background: rgba(165, 243, 196, 0.08);
+  border: 1px dashed rgba(165, 243, 196, 0.4);
+  border-radius: 10px;
+  padding: 8px 12px;
+  line-height: 1.6;
+}
+
+/* 正在输入动画 */
+.ly_msg_typing {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.ly_msg_typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a5f3c4;
+  animation: ly_blink 1.2s infinite;
+}
+
+.ly_msg_typing span:nth-child(2) { animation-delay: 0.2s; }
+.ly_msg_typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes ly_blink {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* 输入区 */
+.ly_input_bar {
+  display: flex;
+  gap: 12px;
+}
+
+.ly_input {
+  flex: 1;
+  font-size: 14px;
+  font-family: inherit;
+  color: #eaf2ff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.ly_input:focus {
+  border-color: #a5f3c4;
+}
+
+.ly_send_btn {
+  min-width: 76px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #06281f;
+  background: #a5f3c4;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.ly_send_btn:hover {
+  transform: translateY(-2px);
+}
+
+.ly_send_btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 手机适配 */
+@media (max-width: 560px) {
+  .ly_main {
+    padding: 26px 12px 20px;
+  }
+
+  .ly_card {
+    padding: 20px 16px;
+  }
+
+  .ly_msg,
+  .ly_sources {
+    max-width: 90%;
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：在线客服页面
+  功能说明：基于七牛在线客服大模型的智能客服对话界面，消息通过后端接口
+            POST /api/customer_service/chat 转发（API Key 保存在服务端 .env）；
+            支持常见问题快捷提问、多轮上下文、发送中状态、成功与失败提示，
+            页面适配手机宽度
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线客服 - 刘悦的项目集</title>
+  <link rel="stylesheet" href="css/ly_customer_service.css">
+</head>
+<body>
+  <main class="ly_main">
+    <a class="ly_back" href="index.html">← 返回首页</a>
+
+    <section class="ly_service_card">
+      <header class="ly_service_header">
+        <div class="ly_service_avatar">小悦</div>
+        <div class="ly_service_info">
+          <h1 class="ly_title">在线客服</h1>
+          <p class="ly_desc">七牛大模型驱动 · 接口：<span class="ly_api_text">POST /api/customer_service/chat</span></p>
+        </div>
+        <span class="ly_service_online">● 在线</span>
+      </header>
+
+      <!-- 消息列表区域 -->
+      <div class="ly_service_box" id="ly_service_box">
+        <div class="ly_msg ly_msg_kefu">您好，我是在线客服小悦～ 关于本网站的使用问题（页面导航、新闻列表、图库、AI 聊天等）都可以问我。您可以点击下方常见问题，也可以直接输入。</div>
+      </div>
+
+      <!-- 常见问题快捷提问 -->
+      <div class="ly_quick_bar" id="ly_quick_bar">
+        <button class="ly_quick_btn" type="button" data-ly_q="这个网站都有哪些功能页面？">网站有哪些页面？</button>
+        <button class="ly_quick_btn" type="button" data-ly_q="图文列表里的图片显示不出来怎么办？">图片不显示怎么办？</button>
+        <button class="ly_quick_btn" type="button" data-ly_q="后端服务怎么启动？">后端怎么启动？</button>
+      </div>
+
+      <!-- 错误提示条 -->
+      <div class="ly_status ly_hide" id="ly_status"></div>
+
+      <!-- 输入区域 -->
+      <footer class="ly_input_bar">
+        <textarea class="ly_input" id="ly_input" rows="2" placeholder="请输入您的问题，Enter 发送"></textarea>
+        <button class="ly_send_btn" id="ly_send_btn" type="button">发送</button>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/ly_customer_service.js"></script>
+</body>
+</html>

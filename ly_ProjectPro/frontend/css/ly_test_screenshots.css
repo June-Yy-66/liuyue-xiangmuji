@@ -1,0 +1,106 @@
+/*
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：功能测试截图展示页样式
+  功能说明：毛玻璃卡片内纵向排列 5 张测试截图（含说明文字）；
+            窄屏（手机）下自适应
+*/
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #eaf2ff;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+/* 主体容器 */
+.ly_main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 20px 40px;
+}
+
+/* 返回首页 */
+.ly_back {
+  display: inline-block;
+  color: rgba(234, 242, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 14px;
+  transition: color 0.2s ease;
+}
+
+.ly_back:hover {
+  color: #a5f3c4;
+}
+
+/* 卡片 */
+.ly_card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 28px 30px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.35);
+}
+
+.ly_title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #a5f3c4, #7ee8fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ly_desc {
+  font-size: 13px;
+  color: rgba(234, 242, 255, 0.65);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* 截图列表 */
+.ly_shots_list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ly_shot {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.ly_shot_img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.ly_shot_caption {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(234, 242, 255, 0.7);
+  padding-top: 10px;
+}
+
+/* 手机适配 */
+@media (max-width: 560px) {
+  .ly_main {
+    padding: 26px 12px 20px;
+  }
+
+  .ly_card {
+    padding: 20px 16px;
+  }
+}

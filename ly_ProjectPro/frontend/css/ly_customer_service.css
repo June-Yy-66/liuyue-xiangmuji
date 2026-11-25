@@ -1,0 +1,287 @@
+/*
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：在线客服页面样式
+  功能说明：客服卡片布局，客服消息靠左白气泡、用户消息靠右蓝气泡；
+            含常见问题快捷按钮；窄屏（手机）下自动收紧布局
+*/
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #eaf2ff;
+  /* 与首页一致的深色渐变背景 */
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+/* 主体容器 */
+.ly_main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 50px 20px 40px;
+}
+
+/* 返回首页链接 */
+.ly_back {
+  display: inline-block;
+  color: rgba(234, 242, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 14px;
+  transition: color 0.2s ease;
+}
+
+.ly_back:hover {
+  color: #ffd6a5;
+}
+
+/* 客服卡片 */
+.ly_service_card {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* 头部 */
+.ly_service_header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(90deg, rgba(255, 214, 165, 0.12), rgba(255, 255, 255, 0));
+}
+
+/* 客服头像 */
+.ly_service_avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #06283d;
+  background: linear-gradient(135deg, #ffd6a5, #ffb88c);
+  flex-shrink: 0;
+}
+
+.ly_title {
+  font-size: 20px;
+  background: linear-gradient(90deg, #ffd6a5, #7ee8fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ly_desc {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(234, 242, 255, 0.6);
+}
+
+.ly_api_text {
+  color: #ffd6a5;
+}
+
+/* 在线状态标签 */
+.ly_service_online {
+  margin-left: auto;
+  font-size: 12px;
+  color: #9ff0b6;
+  background: rgba(159, 240, 182, 0.12);
+  border: 1px solid rgba(159, 240, 182, 0.4);
+  border-radius: 999px;
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+
+/* 消息滚动区域 */
+.ly_service_box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 消息气泡公共样式 */
+.ly_msg {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* 客服消息：靠左 */
+.ly_msg_kefu {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.12);
+  border-top-left-radius: 4px;
+}
+
+/* 用户消息：靠右 */
+.ly_msg_user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #c76a2b, #ffb88c);
+  color: #1b1005;
+  border-top-right-radius: 4px;
+}
+
+/* “正在输入”提示气泡 */
+.ly_msg_typing {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.ly_msg_typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffd6a5;
+  animation: ly_blink 1.2s infinite;
+}
+
+.ly_msg_typing span:nth-child(2) { animation-delay: 0.2s; }
+.ly_msg_typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes ly_blink {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* 常见问题快捷按钮栏 */
+.ly_quick_bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 24px 12px;
+}
+
+.ly_quick_btn {
+  font-size: 12px;
+  color: #ffd6a5;
+  background: rgba(255, 214, 165, 0.1);
+  border: 1px solid rgba(255, 214, 165, 0.4);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ly_quick_btn:hover {
+  background: rgba(255, 214, 165, 0.22);
+  transform: translateY(-1px);
+}
+
+/* 错误提示条 */
+.ly_status {
+  margin: 0 24px 0;
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ffa8a8;
+}
+
+.ly_hide {
+  display: none;
+}
+
+/* 底部输入区 */
+.ly_input_bar {
+  display: flex;
+  gap: 12px;
+  padding: 14px 24px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* 输入框 */
+.ly_input {
+  flex: 1;
+  resize: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #eaf2ff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.ly_input:focus {
+  border-color: #ffd6a5;
+}
+
+/* 发送按钮 */
+.ly_send_btn {
+  align-self: stretch;
+  min-width: 76px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1b1005;
+  background: #ffd6a5;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.ly_send_btn:hover {
+  transform: translateY(-2px);
+}
+
+.ly_send_btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 手机宽度适配 */
+@media (max-width: 560px) {
+  .ly_main {
+    padding: 24px 10px 16px;
+  }
+
+  .ly_msg {
+    max-width: 88%;
+  }
+
+  .ly_service_header,
+  .ly_service_box,
+  .ly_quick_bar,
+  .ly_input_bar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .ly_service_online {
+    display: none;
+  }
+}

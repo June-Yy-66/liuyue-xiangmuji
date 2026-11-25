@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：语音识别页面（ASR 语音转文字）
+  功能说明：两种输入方式——① 浏览器麦克风录音（MediaRecorder）；
+            ② 上传音频文件（wav/mp3/m4a/webm/ogg/flac，15MB 内）。
+            音频发送到后端 POST /api/asr/recognize，由后端调用
+            硅基流动 Qwen3-ASR 模型返回识别文字；支持录音预览播放、
+            录音时长显示、成功与失败提示；服务器返回的数据和错误信息
+            均输出到浏览器控制台
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语音识别 - 刘悦的项目集</title>
+  <link rel="stylesheet" href="css/ly_speech_recognition.css">
+</head>
+<body>
+  <main class="ly_main">
+    <a class="ly_back" href="index.html">← 返回首页</a>
+
+    <section class="ly_card">
+      <h1 class="ly_title">语音识别</h1>
+      <p class="ly_desc">录制一段语音或上传音频文件，Qwen3-ASR 大模型将把它转成文字。支持 wav / mp3 / m4a / webm / ogg / flac，15MB 以内。接口：<span class="ly_api_text">POST /api/asr/recognize</span></p>
+
+      <!-- 模式切换 -->
+      <div class="ly_mode_tabs">
+        <button class="ly_tab ly_tab_active" id="ly_tab_record" type="button">🎙️ 麦克风录音</button>
+        <button class="ly_tab" id="ly_tab_upload" type="button">📁 上传音频文件</button>
+      </div>
+
+      <!-- 录音面板 -->
+      <div class="ly_panel" id="ly_panel_record">
+        <div class="ly_record_box">
+          <button class="ly_record_btn" id="ly_record_btn" type="button">
+            <span class="ly_record_icon" id="ly_record_icon">🎙️</span>
+            <span id="ly_record_label">点击开始录音</span>
+          </button>
+          <div class="ly_record_time ly_hide" id="ly_record_time">00:00</div>
+          <audio class="ly_audio_player ly_hide" id="ly_record_player" controls></audio>
+          <button class="ly_recognize_btn ly_hide" id="ly_record_recognize_btn" type="button">开始识别</button>
+        </div>
+      </div>
+
+      <!-- 上传面板 -->
+      <div class="ly_panel ly_hide" id="ly_panel_upload">
+        <div class="ly_upload_area" id="ly_upload_area">
+          <input type="file" id="ly_file_input" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac" hidden>
+          <div class="ly_upload_icon">🎵</div>
+          <p class="ly_upload_text" id="ly_upload_text">点击选择或拖拽音频文件到此处</p>
+          <button class="ly_upload_btn" id="ly_upload_btn" type="button">选择音频文件</button>
+        </div>
+      </div>
+
+      <div class="ly_status ly_hide" id="ly_status"></div>
+
+      <!-- 识别结果 -->
+      <div class="ly_result ly_hide" id="ly_result">
+        <div class="ly_result_head">📝 识别结果</div>
+        <p class="ly_result_text" id="ly_result_text"></p>
+        <p class="ly_result_meta ly_hide" id="ly_result_meta"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ly_speech_recognition.js"></script>
+</body>
+</html>

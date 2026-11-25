@@ -1,0 +1,152 @@
+/*
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-20 | 大模型：GLM-5.3-Flash
+  功能名称：数据库连接页面样式
+  功能说明：与首页一致的深色渐变 + 毛玻璃卡片风格，含成功/失败提示样式
+*/
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #eaf2ff;
+  /* 与首页一致的深色渐变背景 */
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+/* 主体容器 */
+.ly_main {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+}
+
+/* 返回首页链接 */
+.ly_back {
+  display: inline-block;
+  color: rgba(234, 242, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 18px;
+  transition: color 0.2s ease;
+}
+
+.ly_back:hover {
+  color: #7ee8fa;
+}
+
+/* 毛玻璃卡片 */
+.ly_card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 40px 36px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ly_title {
+  font-size: 26px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #7ee8fa, #eec0c6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ly_desc {
+  font-size: 14px;
+  color: rgba(234, 242, 255, 0.6);
+  margin-bottom: 28px;
+}
+
+/* 表单布局 */
+.ly_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ly_label {
+  font-size: 14px;
+  color: rgba(234, 242, 255, 0.85);
+  margin-bottom: 8px;
+}
+
+.ly_input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #eaf2ff;
+  font-size: 15px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+/* 输入框聚焦高亮 */
+.ly_input:focus {
+  border-color: #7ee8fa;
+}
+
+/* 连接按钮 */
+.ly_btn {
+  margin-top: 6px;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0f2027;
+  background: linear-gradient(90deg, #7ee8fa, #a1ffc8);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 按钮悬停上浮 */
+.ly_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(126, 232, 250, 0.35);
+}
+
+/* 请求中禁用态 */
+.ly_btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 结果提示区 */
+.ly_result {
+  margin-top: 24px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* 默认隐藏 */
+.ly_hide {
+  display: none;
+}
+
+/* 连接成功：绿色 */
+.ly_success {
+  background: rgba(81, 207, 132, 0.15);
+  border: 1px solid rgba(81, 207, 132, 0.5);
+  color: #8ce6b1;
+}
+
+/* 连接失败：红色 */
+.ly_error {
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ffa8a8;
+}

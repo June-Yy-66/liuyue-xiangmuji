@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+.DS_Store
+Thumbs.db
+# 知识库用户上传的运行时文件（预置文件在 backend/knowledge/presets，正常入库）
+backend/knowledge/uploads/

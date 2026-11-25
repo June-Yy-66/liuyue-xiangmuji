@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-20 | 大模型：GLM-5.3-Flash
+  功能名称：项目首页（导航页）
+  功能说明：展示姓名、学号、项目名称、项目类别，并提供所有已完成页面的超链接入口；
+            背景为 canvas 粒子连线动画
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>刘悦的项目集 - 首页</title>
+  <link rel="stylesheet" href="css/ly_index.css">
+</head>
+<body>
+  <!-- canvas 背景动画画布 -->
+  <canvas id="ly_canvas"></canvas>
+
+  <main class="ly_main">
+    <!-- 头部信息区 -->
+    <header class="ly_hero">
+      <h1 class="ly_title">刘悦的项目集</h1>
+      <p class="ly_subtitle">Web 课程作业 · 个人页面导航</p>
+      <div class="ly_info">
+        <p class="ly_info_item">姓名：刘悦</p>
+        <p class="ly_info_item">学号：24002120220</p>
+        <p class="ly_info_item">项目名称：个人课程作业项目集</p>
+        <p class="ly_info_item">项目类别：自选</p>
+      </div>
+    </header>
+
+    <!-- 页面导航区：所有已完成的 html 页面入口（detail 页面除外） -->
+    <section class="ly_nav">
+      <h2 class="ly_nav_title">页面导航</h2>
+      <ul class="ly_nav_list">
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="index.html">
+            <span class="ly_nav_icon">🏠</span>
+            <span class="ly_nav_text">首页</span>
+            <span class="ly_nav_desc">项目信息与导航入口</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="database.html">
+            <span class="ly_nav_icon">🗄️</span>
+            <span class="ly_nav_text">数据库连接</span>
+            <span class="ly_nav_desc">输入账号密码测试连接 MySQL</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="news.html">
+            <span class="ly_nav_icon">📰</span>
+            <span class="ly_nav_text">科技新闻列表</span>
+            <span class="ly_nav_desc">读取数据库新闻数据展示</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="photos.html">
+            <span class="ly_nav_icon">🖼️</span>
+            <span class="ly_nav_text">图文列表</span>
+            <span class="ly_nav_desc">读取数据库图文卡片展示</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="gallery.html">
+            <span class="ly_nav_icon">🎨</span>
+            <span class="ly_nav_text">图库图文列表</span>
+            <span class="ly_nav_desc">上图下文卡片网格展示</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="ai_chat.html">
+            <span class="ly_nav_icon">🤖</span>
+            <span class="ly_nav_text">AI 聊天</span>
+            <span class="ly_nav_desc">硅基流动大模型智能对话</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="customer_service.html">
+            <span class="ly_nav_icon">💬</span>
+            <span class="ly_nav_text">在线客服</span>
+            <span class="ly_nav_desc">七牛大模型智能客服</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="knowledge_base.html">
+            <span class="ly_nav_icon">📚</span>
+            <span class="ly_nav_text">知识库问答</span>
+            <span class="ly_nav_desc">文档上传 + RAG 智能问答</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="image_recognition.html">
+            <span class="ly_nav_icon">🔍</span>
+            <span class="ly_nav_text">图像识别</span>
+            <span class="ly_nav_desc">视觉大模型生成图片描述</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="speech_recognition.html">
+            <span class="ly_nav_icon">🎙️</span>
+            <span class="ly_nav_text">语音识别</span>
+            <span class="ly_nav_desc">语音转文字（Qwen3-ASR）</span>
+          </a>
+        </li>
+        <li class="ly_nav_item">
+          <a class="ly_nav_link" href="test_screenshots.html">
+            <span class="ly_nav_icon">📷</span>
+            <span class="ly_nav_text">功能测试截图</span>
+            <span class="ly_nav_desc">各 AI 功能模块运行效果展示</span>
+          </a>
+        </li>
+        <!-- 新建页面后在此追加超链接入口 -->
+      </ul>
+    </section>
+
+    <footer class="ly_footer">© 2026 刘悦 · 24002120220</footer>
+  </main>
+
+  <script src="js/ly_index.js"></script>
+</body>
+</html>

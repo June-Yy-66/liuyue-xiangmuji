@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-20 | 大模型：GLM-5.3-Flash
+  功能名称：数据库连接页面
+  功能说明：输入 MySQL 用户名与密码，提交到后端 /api/database/connect 接口
+            测试连接，连接成功与失败均有页面提示，默认账号 root
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据库连接 - 刘悦的项目集</title>
+  <link rel="stylesheet" href="css/ly_database.css">
+</head>
+<body>
+  <main class="ly_main">
+    <a class="ly_back" href="index.html">← 返回首页</a>
+
+    <!-- 连接表单 -->
+    <section class="ly_card">
+      <h1 class="ly_title">MySQL 数据库连接</h1>
+      <p class="ly_desc">输入用户名与密码，测试与本机 MySQL 的连接</p>
+
+      <div class="ly_form">
+        <label class="ly_label" for="ly_username">用户名</label>
+        <input class="ly_input" type="text" id="ly_username" value="root" placeholder="请输入 MySQL 用户名">
+
+        <label class="ly_label" for="ly_password">密码</label>
+        <input class="ly_input" type="password" id="ly_password" value="liuyue051230" placeholder="请输入 MySQL 密码">
+
+        <button class="ly_btn" id="ly_connect_btn" type="button">连接数据库</button>
+      </div>
+
+      <!-- 连接结果提示区：成功绿色 / 失败红色 -->
+      <div class="ly_result ly_hide" id="ly_result"></div>
+    </section>
+  </main>
+
+  <script src="js/ly_database.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/*
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-20 | 大模型：GLM-5.3-Flash
+  功能名称：科技新闻列表页面样式
+  功能说明：与全站一致的深色渐变 + 毛玻璃卡片风格，新闻条目卡片化排布
+*/
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #eaf2ff;
+  /* 与首页一致的深色渐变背景 */
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+/* 主体容器 */
+.ly_main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+}
+
+/* 返回首页链接 */
+.ly_back {
+  display: inline-block;
+  color: rgba(234, 242, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 18px;
+  transition: color 0.2s ease;
+}
+
+.ly_back:hover {
+  color: #7ee8fa;
+}
+
+/* 毛玻璃卡片 */
+.ly_card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ly_title {
+  font-size: 26px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #7ee8fa, #eec0c6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ly_desc {
+  font-size: 14px;
+  color: rgba(234, 242, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+/* 接口链接栏 */
+.ly_api_bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(126, 232, 250, 0.4);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 24px;
+}
+
+.ly_api_label {
+  font-size: 13px;
+  color: rgba(234, 242, 255, 0.7);
+}
+
+/* 接口链接样式 */
+.ly_api_link {
+  font-size: 14px;
+  font-weight: bold;
+  color: #7ee8fa;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.ly_api_link:hover {
+  text-decoration: underline;
+}
+
+/* 刷新按钮 */
+.ly_refresh_btn {
+  margin-left: auto;
+  font-size: 13px;
+  color: #0f2027;
+  background: #7ee8fa;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.ly_refresh_btn:hover {
+  transform: translateY(-2px);
+}
+
+/* 状态提示（加载中 / 错误） */
+.ly_status {
+  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.ly_hide {
+  display: none;
+}
+
+.ly_loading {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(234, 242, 255, 0.8);
+}
+
+.ly_fail {
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ffa8a8;
+}
+
+/* 新闻列表 */
+.ly_news_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 单条新闻卡片 */
+.ly_news_item {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ly_news_item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(126, 232, 250, 0.5);
+}
+
+/* 标题行 */
+.ly_news_head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ly_news_title {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* 新闻摘要 */
+.ly_news_summary {
+  font-size: 13px;
+  color: rgba(234, 242, 255, 0.65);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* 元信息：来源 + 时间 */
+.ly_news_meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 12px;
+  color: rgba(234, 242, 255, 0.45);
+}

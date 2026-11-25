@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+  姓名：刘悦 | 学号：24002120220
+  时间：2026-11-25 | 大模型：GLM-5.3-Flash
+  功能名称：GitHub Pages 主页重定向页
+  功能说明：置于 git 仓库根，访问站点主页时自动跳转到
+            ly_ProjectPro/frontend/index.html（项目首页导航页）
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=ly_ProjectPro/frontend/index.html">
+  <title>正在进入 刘悦的项目集 ...</title>
+</head>
+<body>
+  <p style="font-family:'Microsoft YaHei',sans-serif;text-align:center;padding-top:80px;">
+    正在进入 <a href="ly_ProjectPro/frontend/index.html">刘悦的项目集</a> ...
+  </p>
+  <script>
+    // ly_go_home：立即跳转到项目首页导航页
+    function ly_go_home() {
+      window.location.replace("ly_ProjectPro/frontend/index.html");
+    }
+    ly_go_home();
+  </script>
+</body>
+</html>
